@@ -1,0 +1,15 @@
+{
+  "name": "im-starter",
+  "version-string": "0.0.1",
+  "dependencies": [
+      "sdl2",
+      { 
+      "name": "imgui", 
+      "features": [
+        "opengl3-binding",
+        "sdl2-binding"
+      ] 
+      },
+      "opengl"
+  ]
+}

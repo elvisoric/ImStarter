@@ -1,0 +1,16 @@
+if(NOT CMAKE_TOOLCHAIN_FILE)
+    if(NOT EXISTS ${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
+        find_package(Git)
+        if(Git_FOUND)
+            execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --depth=1 --init --recursive vcpkg
+                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                RESULT_VARIABLE GIT_SUBMOD_RESULT)
+            if(NOT  GIT_SUBMOD_RESULT EQUAL "0")
+                message(SEND_ERROR "Checking out vcpkg failed with: ${GIT_SUBMOD_RESULT}")
+            endif()
+        else()
+            message(FATAL_ERROR "Could not find Git or vcpkg.cmake")
+        endif()
+    endif()
+    set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
+endif()
