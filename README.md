@@ -7,3 +7,4 @@ This project is a starting point for my ImGui prototypes :)
 * `ninja`
 * `path/to/build/ImStarter`
 
+![ImStarter](image.png "ImStarter")
